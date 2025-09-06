@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Small React Grid Project</title>
+  <style>
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 10px;
+      padding: 10px;
+    }
+    .grid-item {
+      background-color: #007bff;
+      color: white;
+      padding: 15px;
+      font-size: 1rem;
+      text-align: center;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- React and ReactDOM CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+  <script>
+    const e = React.createElement;
+
+    function Grid() {
+      const items = Array.from({ length: 9 }, (_, i) => i + 1);
+      return e(
+        'div',
+        { className: 'grid-container' },
+        items.map((item) =>
+          e('div', { key: item, className: 'grid-item' }, `Item ${item}`)
+        )
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(e(Grid));
+  </script>
+</body>
+</html>
